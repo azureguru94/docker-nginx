@@ -11,10 +11,10 @@ RUN set -ex \
 COPY ./ /modules/
 
 RUN set -ex \
-    && apk update && apk upgrade && apk add bash \
+    && apk update && apk upgrade \
     && apk add linux-headers openssl-dev pcre2-dev zlib-dev openssl abuild \
                musl-dev libxslt libxml2-utils make mercurial gcc unzip git \
-               xz g++ coreutils \
+               xz g++ coreutils bash \
     # allow abuild as a root user \
     && printf "#!/bin/sh\\nSETFATTR=true /usr/bin/abuild -F \"\$@\"\\n" > /usr/local/bin/abuild \
     && chmod +x /usr/local/bin/abuild \
